@@ -1,0 +1,7 @@
+colorama
+transformers
+openai
+Pillow
+tabulate
+PyYAML
+pandas

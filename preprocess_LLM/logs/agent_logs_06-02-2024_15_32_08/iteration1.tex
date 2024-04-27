@@ -1,0 +1,81 @@
+
+% Import the necessary document class and packages
+\documentclass[tikz,border=5]{standalone} % Use the standalone class with the tikz option for drawing
+\usepackage[prefix=]{xcolor-material} % Use the xcolor-material package for Material Design colors
+
+% Declare a list of colors to be used for the circular frame background
+\pgfmathdeclarerandomlist{material}{%
+{Red}{Blue}{Green}} % List of colors, including the green mentioned in the description
+
+% Define various TikZ styles and macros for creating the dog illustration
+\tikzset{%
+  half clip/.code={
+    \clip (0, -256) rectangle (256, 256); % Clip half of the drawing area
+  },
+  color/.code=\colorlet{fill color}{#1}, % Define a color for filling shapes
+  color alias/.code args={#1 as #2}{\colorlet{#1}{#2}}, % Create an alias for a color
+  colors alias/.style={color alias/.list/.expanded={#1}}, % Alias multiple colors
+  execute/.code={#1}, % Execute code
+  on left/.style={.. on left/.style={#1}}, % Style for the left side of a symmetric drawing
+  on right/.style={.. on right/.style={#1}}, % Style for the right side of a symmetric drawing
+  split/.style args={#1 and #2}{ % Style for splitting the drawing into two colors
+    on left ={color alias=fill color as #1},
+    on right={color alias=fill color as #2, half clip}
+  }
+}
+
+% Define a command for creating symmetrical drawings
+\newcommand\reflect[2][]{%
+\begin{scope}[#1]\foreach \side in {-1, 1}{\begin{scope}
+\ifnum\side=-1 \tikzset{.. on left/.try}\else\tikzset{.. on right/.try}\fi
+\begin{scope}[xscale=\side]#2\end{scope}
+\end{scope}}\end{scope}}
+
+% Define the dog picture using geometric shapes
+\tikzset{%
+dog/.pic={
+\begin{scope}[x=3cm/480,y=3cm/480]
+\useasboundingbox (-256, -256) (256, 256); % Set the bounding box for the dog picture
+\reflect[split=Brown400 and Brown500]{ % Create the head and ears with a split brown color
+  \fill [fill color] (0,-64) ellipse [x radius=160, y radius=144]; % Head
+  \fill [fill color] (0, 32) ellipse [x radius=128, y radius=112]; % Upper head
+  \fill [fill color] (32,96) % Ears
+  .. controls ++( 75:128) and ++(105:128) .. ++(192,  0)
+  .. controls ++(285: 96) and ++(285: 96) .. ++(-80,-32)
+  .. controls ++(105: 64) and ++( 75: 32) .. cycle;
+}
+\reflect[split={Grey100 and Grey200}]{ % Create the white patch on the face
+  \clip (0,-64) ellipse [x radius=160, y radius=144]; % Clip to the head shape
+  \fill [fill color](0,-224) % White patch
+    .. controls ++(  0:64) and ++(270:64) .. ++(96,64)
+    .. controls ++( 90:64) and ++(270:64) .. ++(-96,192)
+    .. controls ++(270:64) and ++( 90:64) .. ++(-96,-192)
+    .. controls ++(270:64) and ++(180:64) .. cycle;
+}
+\reflect[split={Pink100 and Pink200}]{ % Create the tongue
+  \fill [fill color](0,-192) ellipse [x radius=28, y radius=32]; % Tongue shape
+}
+\reflect[split={BlueGrey800 and BlueGrey900}]{ % Create the nose and eyes
+  \fill [fill color](0,-144) % Nose shape
+    .. controls ++(  0:20) and ++(315:20) .. ++( 40,64)
+    .. controls ++(135:20) and ++( 45:20) .. ++(-80, 0)
+    .. controls ++(225:20) and ++(180:20) .. cycle;
+  \fill [Red] (56, 0) circle [radius=20]; % Right eye (changed to red)
+  \fill [Red] (-56, 0) circle [radius=20]; % Left eye (changed to red)
+}
+\end{scope}}
+}
+
+% Begin the document environment
+\begin{document}
+\begin{tikzpicture}
+\foreach \animal [count=\i from 0, evaluate={\x=mod(\i,3)*5; \y=-floor(\i/3)*5;}]
+  in {dog}{ % Loop to create multiple instances of the dog picture if needed
+\pgfmathrandomitem\materialColor{material} % Randomly select a color for the circular frame
+\scoped[shift={(\x,\y)}]{ % Position the dog picture
+\fill [fill=\materialColor50] circle [radius=2]; % Draw the circular frame with the selected color
+\pic {\animal}; % Draw the dog picture
+\node [below]at (0, -2) {\ttfamily\animal}; % Add the label "dog" below the picture
+}}
+\end{tikzpicture}
+\end{document}

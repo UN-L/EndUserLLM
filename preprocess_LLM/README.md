@@ -1,0 +1,3 @@
+This script performs a pre-processing step by commenting the code. The script starts the process by compiling a TikZ file. Once the image has been generated, the VLM (GPT-Vision) describes the image content. The description derived from the VLM is then passed on to an LLM (GPT-4). This comments the code on the basis of the visual information obtained from the GPT-Vision model. The commented code is now enriched by GPT-4's comments. It is then sent to GPT-3 for modifications.
+
+You can run the script directly, as it contains an example.

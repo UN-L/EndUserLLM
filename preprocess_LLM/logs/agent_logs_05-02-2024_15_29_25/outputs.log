@@ -1,0 +1,10 @@
+===INITIALIZATION===
+Goal: Change the color of the dog's eyes to red
+Input file: onlydog.tex
+Model: gpt-3.5-turbo
+System goal: You are a helpful assistant for programming and customizing code. All you have to do is answer the question by writing the entire code with the modifications. DO NOT answer anything other than the entire code. If you make mistakes, don't apologize, just send the entire code with the modifications
+Temperature: 0.2
+Top_P: 0.1
+
+===PROCESSING===
+description: The image is a simple, flat-design graphic of a dog's face. It's a stylized representation with basic shapes and minimal detail. The dog has a brown coat with darker brown patches over the eyes and ears, and a white stripe running down the center of its face. It also has a black nose and a little pink tongue poking out from the bottom of the smiling mouth. The background is a light pink circle, and below the image, there's the word "dog."

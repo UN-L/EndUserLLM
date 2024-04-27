@@ -1,0 +1,104 @@
+
+% Define the document class with TikZ and a specified border size
+\documentclass[tikz,border=5]{standalone}
+
+% Import the xcolor-material package with a specific prefix option
+\usepackage[prefix=]{xcolor-material}
+
+% Declare a random list of colors using material design color names
+\pgfmathdeclarerandomlist{material}{%
+{Red}{Blue}{Green}}
+
+% Define TikZ settings for various styles used in the illustration
+\tikzset{%
+  % Define a half clip to be used for creating split color effects
+  half clip/.code={
+    \clip (0, -256) rectangle (256, 256);
+  },
+  % Define a color setting to use named colors
+  color/.code=\colorlet{fill color}{#1},
+  % Define a color alias for reusing colors with different names
+  color alias/.code args={#1 as #2}{\colorlet{#1}{#2}},
+  % Define a style for applying multiple color aliases
+  colors alias/.style={color alias/.list/.expanded={#1}},
+  % Define a style for executing code
+  execute/.code={#1},
+  % Define styles for applying settings to the left or right side of a split
+  on left/.style={.. on left/.style={#1}},
+  on right/.style={.. on right/.style={#1}},
+  % Define a split style for applying different colors to each side
+  split/.style args={#1 and #2}{
+    on left ={color alias=fill color as #1},
+    on right={color alias=fill color as #2, half clip}
+  }
+}
+
+% Define a new command for creating reflected shapes
+\newcommand\reflect[2][]{%
+\begin{scope}[#1]\foreach \side in {-1, 1}{\begin{scope}
+\ifnum\side=-1 \tikzset{.. on left/.try}\else\tikzset{.. on right/.try}\fi
+\begin{scope}[xscale=\side]#2\end{scope}
+\end{scope}}\end{scope}}
+
+% Define the dog pic with specific shapes and colors
+\tikzset{%
+dog/.pic={
+\begin{scope}[x=3cm/480,y=3cm/480]
+\useasboundingbox (-256, -256) (256, 256);
+% Create the head and ears with a split brown color effect
+\reflect[split=Brown400 and Brown500]{
+  \fill [fill color] (0,-64) ellipse [x radius=160, y radius=144];
+  \fill [fill color] (0, 32) ellipse [x radius=128, y radius=112];
+  \fill [fill color] (32,96)
+  .. controls ++( 75:128) and ++(105:128) .. ++(192,  0)
+  .. controls ++(285: 96) and ++(285: 96) .. ++(-80,-32)
+  .. controls ++(105: 64) and ++( 75: 32) .. cycle;
+}
+% Create the muzzle with a split grey color effect
+\reflect[split={Grey100 and Grey200}]{
+  \clip (0,-64) ellipse [x radius=160, y radius=144];
+  \fill [fill color](0,-224) 
+    .. controls ++(  0:64) and ++(270:64) .. ++(96,64)
+    .. controls ++( 90:64) and ++(270:64) .. ++(-96,192)
+    .. controls ++(270:64) and ++( 90:64) .. ++(-96,-192)
+    .. controls ++(270:64) and ++(180:64) .. cycle;
+}
+% Create the tongue with a split pink color effect
+\reflect[split={Pink100 and Pink200}]{
+  \fill [fill color](0,-192) ellipse [x radius=28, y radius=32];
+}
+% Create the nose and mouth with a split blue-grey color effect
+\reflect[split={BlueGrey800 and BlueGrey900}]{
+  \fill [fill color](0,-144) 
+    .. controls ++(  0:20) and ++(315:20) .. ++( 40,64)
+    .. controls ++(135:20) and ++( 45:20) .. ++(-80, 0)
+    .. controls ++(225:20) and ++(180:20) .. cycle;
+  \fill [BlueGrey900] (56, 0) circle [radius=20];
+  \fill [fill color] (-8,-112)
+  -- ++(16,0) -- ++(0,-32) arc (180:360:24)
+  arc (180:0:8) arc (360:180:40);
+}
+% Change the color of the left eye to red
+\reflect[split={Red400 and BlueGrey900}]{
+  \fill [fill color] (-48, 32) ellipse [x radius=24, y radius=16];
+}
+\end{scope}}
+}
+
+% Begin the document environment
+\begin{document}
+\begin{tikzpicture}
+% Loop through each animal to create multiple instances if needed
+\foreach \animal [count=\i from 0, evaluate={\x=mod(\i,3)*5; \y=-floor(\i/3)*5;}]
+  in {dog}{
+\pgfmathrandomitem\materialColor{material}
+% Position each animal instance and set a background color
+\scoped[shift={(\x,\y)}]{
+\fill [fill=\materialColor50] circle [radius=2];
+% Draw the dog pic defined earlier
+\pic {\animal};
+% Add a label below the illustration
+\node [below]at (0, -2) {\ttfamily\animal};
+}}
+\end{tikzpicture}
+\end{document}

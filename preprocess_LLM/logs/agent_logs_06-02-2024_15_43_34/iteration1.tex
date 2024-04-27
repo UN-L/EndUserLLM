@@ -1,0 +1,101 @@
+
+% Define the document class with TikZ and a specified border size
+\documentclass[tikz,border=5]{standalone}
+
+% Import the xcolor-material package with a specific prefix option
+\usepackage[prefix=]{xcolor-material}
+
+% Declare a random list of colors using material design color names
+\pgfmathdeclarerandomlist{material}{%
+{Red}{Blue}{Green}}
+
+% Define TikZ styles and commands for creating the dog illustration
+\tikzset{%
+  % Define a half clipping path to be used later for creating split color effects
+  half clip/.code={
+    \clip (0, -256) rectangle (256, 256);
+  },
+  % Define a style to set the fill color using color names
+  color/.code=\colorlet{fill color}{#1},
+  % Define a style to create an alias for a color
+  color alias/.code args={#1 as #2}{\colorlet{#1}{#2}},
+  % Define a style to create multiple color aliases
+  colors alias/.style={color alias/.list/.expanded={#1}},
+  % Define a style to execute arbitrary code
+  execute/.code={#1},
+  % Define styles to apply other styles conditionally based on the side of reflection
+  on left/.style={.. on left/.style={#1}},
+  on right/.style={.. on right/.style={#1}},
+  % Define a style to split colors and apply clipping for the reflected parts
+  split/.style args={#1 and #2}{
+    on left ={color alias=fill color as #1},
+    on right={color alias=fill color as #2, half clip}
+  }
+}
+
+% Define a command to create reflected parts of the illustration
+\newcommand\reflect[2][]{%
+\begin{scope}[#1]\foreach \side in {-1, 1}{\begin{scope}
+\ifnum\side=-1 \tikzset{.. on left/.try}\else\tikzset{.. on right/.try}\fi
+\begin{scope}[xscale=\side]#2\end{scope}
+\end{scope}}\end{scope}}
+
+% Define the dog illustration using TikZ commands and the previously defined styles
+\tikzset{%
+dog/.pic={
+\begin{scope}[x=3cm/480,y=3cm/480]
+\useasboundingbox (-256, -256) (256, 256);
+% Create the main parts of the dog's face with split colors for fur pattern
+\reflect[split=Brown400 and Brown500]{
+  \fill [fill color] (0,-64) ellipse [x radius=160, y radius=144]; % Head
+  \fill [fill color] (0, 32) ellipse [x radius=128, y radius=112]; % Upper head
+  \fill [fill color] (32,96)
+  .. controls ++( 75:128) and ++(105:128) .. ++(192,  0)
+  .. controls ++(285: 96) and ++(285: 96) .. ++(-80,-32)
+  .. controls ++(105: 64) and ++( 75: 32) .. cycle; % Ears and top of the head
+}
+% Create the white muzzle and area between the eyes
+\reflect[split={Grey100 and Grey200}]{
+  \clip (0,-64) ellipse [x radius=160, y radius=144]; % Clip to the head shape
+  \fill [fill color](0,-224) 
+    .. controls ++(  0:64) and ++(270:64) .. ++(96,64)
+    .. controls ++( 90:64) and ++(270:64) .. ++(-96,192)
+    .. controls ++(270:64) and ++( 90:64) .. ++(-96,-192)
+    .. controls ++(270:64) and ++(180:64) .. cycle; % Muzzle and between eyes
+}
+% Create the dog's nose and tongue with split colors
+\reflect[split={Pink100 and Pink200}]{
+  \fill [fill color](0,-192) ellipse [x radius=28, y radius=32]; % Tongue
+}
+\reflect[split={BlueGrey800 and BlueGrey900}]{
+  \fill [fill color](0,-144) 
+    .. controls ++(  0:20) and ++(315:20) .. ++( 40,64)
+    .. controls ++(135:20) and ++( 45:20) .. ++(-80, 0)
+    .. controls ++(225:20) and ++(180:20) .. cycle; % Nose
+  \fill [BlueGrey900] (56, 0) circle [radius=20]; % Nose detail
+  \fill [fill color] (-8,-112)
+  -- ++(16,0) -- ++(0,-32) arc (180:360:24)
+  arc (180:0:8) arc (360:180:40); % Mouth and tongue detail
+}
+% Change the color of the dog's eyes to red
+\reflect[split={Red500 and Red600}]{
+  \fill [fill color] (-48, 16) circle [radius=16]; % Left eye
+  \fill [fill color] (48, 16) circle [radius=16]; % Right eye
+}
+\end{scope}}
+}
+
+% Begin the document environment
+\begin{document}
+\begin{tikzpicture}
+% Loop to create multiple instances of the dog illustration
+\foreach \animal [count=\i from 0, evaluate={\x=mod(\i,3)*5; \y=-floor(\i/3)*5;}]
+  in {dog}{
+\pgfmathrandomitem\materialColor{material} % Randomly select a material color
+\scoped[shift={(\x,\y)}]{
+\fill [fill=\materialColor50] circle [radius=2]; % Create the light green circular background
+\pic {\animal}; % Place the dog illustration
+\node [below]at (0, -2) {\ttfamily\animal}; % Add the label "dog" below the illustration
+}}
+\end{tikzpicture}
+\end{document}

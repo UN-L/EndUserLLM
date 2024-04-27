@@ -1,0 +1,100 @@
+% This code block defines the document class and necessary packages for creating a standalone TikZ image.
+\documentclass[tikz,border=5]{standalone}
+\usepackage[prefix=]{xcolor-material}
+
+% This code block defines a random list of colors using the xcolor-material package.
+\pgfmathdeclarerandomlist{material}{%
+{Red}{Blue}{Green}}
+
+% This code block defines various TikZ styles and codes for manipulating colors and executing commands.
+\tikzset{%
+  half clip/.code={
+    \clip (0, -256) rectangle (256, 256);
+  },
+  color/.code=\colorlet{fill color}{#1},
+  color alias/.code args={#1 as #2}{\colorlet{#1}{#2}},
+  colors alias/.style={color alias/.list/.expanded={#1}},
+  execute/.code={#1},
+  on left/.style={.. on left/.style={#1}},
+  on right/.style={.. on right/.style={#1}},
+  split/.style args={#1 and #2}{
+    on left ={color alias=fill color as #1},
+    on right={color alias=fill color as #2, half clip}
+  }
+}
+
+% This code block defines a custom command for reflecting and duplicating a given TikZ picture.
+\newcommand\reflect[2][]{%
+\begin{scope}[#1]\foreach \side in {-1, 1}{\begin{scope}
+\ifnum\side=-1 \tikzset{.. on left/.try}\else\tikzset{.. on right/.try}\fi
+\begin{scope}[xscale=\side]#2\end{scope}
+\end{scope}}\end{scope}}
+
+% This code block defines a custom TikZ picture called "dog".
+\tikzset{%
+dog/.pic={
+\begin{scope}[x=3cm/480,y=3cm/480]
+\useasboundingbox (-256, -256) (256, 256);
+
+% This code block reflects and splits the dog's face into different color sections.
+\reflect[split=Brown400 and Brown500]{
+  \fill [fill color] (0,-64) ellipse [x radius=160, y radius=144];
+  \fill [fill color] (0, 32) ellipse [x radius=128, y radius=112];
+  \fill [fill color] (32,96)
+  .. controls ++( 75:128) and ++(105:128) .. ++(192,  0)
+  .. controls ++(285: 96) and ++(285: 96) .. ++(-80,-32)
+  .. controls ++(105: 64) and ++( 75: 32) .. cycle;
+}
+
+% This code block reflects and splits the dog's snout into different color sections.
+\reflect[split={Grey100 and Grey200}]{
+  \clip (0,-64) ellipse [x radius=160, y radius=144];
+  \fill [fill color](0,-224) 
+    .. controls ++(  0:64) and ++(270:64) .. ++(96,64)
+    .. controls ++( 90:64) and ++(270:64) .. ++(-96,192)
+    .. controls ++(270:64) and ++( 90:64) .. ++(-96,-192)
+    .. controls ++(270:64) and ++(180:64) .. cycle;
+}
+
+% This code block reflects and splits the dog's nose into different color sections.
+\reflect[split={Pink100 and Pink200}]{
+  \fill [fill color](0,-192) ellipse [x radius=28, y radius=32];
+}
+
+% This code block reflects and splits the dog's mouth and tongue into different color sections.
+\reflect[split={BlueGrey800 and BlueGrey900}]{
+  \fill [fill color](0,-144) 
+    .. controls ++(  0:20) and ++(315:20) .. ++( 40,64)
+    .. controls ++(135:20) and ++( 45:20) .. ++(-80, 0)
+    .. controls ++(225:20) and ++(180:20) .. cycle;
+  \fill [BlueGrey900] (56, 0) circle [radius=20];
+  \fill [fill color] (-8,-112)
+  -- ++(16,0) -- ++(0,-32) arc (180:360:24)
+  arc (180:0:8) arc (360:180:40);
+}
+
+% This code block changes the color of the dog's eyes to red.
+\fill [Red] (-48, 16) circle [radius=8];
+\fill [Red] (48, 16) circle [radius=8];
+\end{scope}}
+}
+
+% This code block starts the document and creates a TikZ picture.
+\begin{document}
+\begin{tikzpicture}
+
+% This code block iterates over the animal list and randomly selects a color from the material list.
+\foreach \animal [count=\i from 0, evaluate={\x=mod(\i,3)*5; \y=-floor(\i/3)*5;}]
+  in {dog}{
+\pgfmathrandomitem\materialColor{material}
+
+% This code block shifts the position of each animal and fills a circle with a light color.
+\scoped[shift={(\x,\y)}]{
+\fill [fill=\materialColor50] circle [radius=2];
+
+% This code block includes the animal picture and adds a label below it.
+\pic {\animal};
+\node [below]at (0, -2) {\ttfamily\animal};
+}}
+\end{tikzpicture}
+\end{document}

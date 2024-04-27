@@ -1,0 +1,9 @@
+===INITIALIZATION===
+Goal: Change the color of the dog's left eye to red
+Input file: onlydog.tex
+Model: gpt-3.5-turbo
+System goal: You are a helpful assistant for programming and customizing code. All you have to do is answer the question by writing the entire code with the modifications. DO NOT answer anything other than the entire code. If you make mistakes, don't apologize, just send the entire code with the modifications
+Temperature: 0.2
+Top_P: 0.1
+
+===PROCESSING===
