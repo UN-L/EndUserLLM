@@ -1,0 +1,138 @@
+
+===PARAMETERS===
+Prompt: Changes eye color to red
+Input file: onlydog.tex
+Model: gpt-4-1106-preview
+Temperature: 0.2
+Top_P: 0.1
+
+
+Successes: 30/30
+No matches: 0/30
+Code matches: 30/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes ear color to red
+Input file: onlydog.tex
+Model: gpt-4-1106-preview
+Temperature: 0.2
+Top_P: 0.1
+
+
+Successes: 16/30
+No matches: 14/30
+Code matches: 16/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes cheek color to red
+Input file: onlydog.tex
+Model: gpt-4-1106-preview
+Temperature: 0.2
+Top_P: 0.1
+
+
+Successes: 0/30
+No matches: 30/30
+Code matches: 0/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes wing color to red
+Input file: bee.tex
+Model: gpt-4-1106-preview
+Temperature: 0.2
+Top_P: 0.1
+
+
+Successes: 30/30
+No matches: 0/30
+Code matches: 0/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes head color to red
+Input file: bee.tex
+Model: gpt-4-1106-preview
+Temperature: 0.2
+Top_P: 0.1
+
+
+Successes: 30/30
+No matches: 0/30
+Code matches: 16/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes abdomen color to red
+Input file: bee.tex
+Model: gpt-4-1106-preview
+Temperature: 0.2
+Top_P: 0.1
+
+
+Successes: 0/30
+No matches: 30/30
+Code matches: 0/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes head color to red
+Input file: squid.tex
+Model: gpt-4-1106-preview
+Temperature: 0.2
+Top_P: 0.1
+
+
+Successes: 0/30
+No matches: 30/30
+Code matches: 0/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes eye color to red
+Input file: squid.tex
+Model: gpt-4-1106-preview
+Temperature: 0.2
+Top_P: 0.1
+
+
+Successes: 5/30
+No matches: 25/30
+Code matches: 0/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes mouth color to red
+Input file: squid.tex
+Model: gpt-4-1106-preview
+Temperature: 0.2
+Top_P: 0.1
+
+
+Successes: 24/30
+No matches: 6/30
+Code matches: 30/30
+Compilation failures: 0/30
+
+LaTeX table: 
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+ & Dog red eyes & Dog red ears & Dog red cheeks & Bee red winds & Bee red head & Bee red abdomen & Squid red head & Squid red eye & Squid red mouth \\
+\midrule
+Successes & 30 & 16 & 0 & 30 & 30 & 0 & 0 & 5 & 24 \\
+No matches & 0 & 14 & 30 & 0 & 0 & 30 & 30 & 25 & 6 \\
+Code matches & 30 & 16 & 0 & 0 & 16 & 0 & 0 & 0 & 30 \\
+Compilation failures & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+

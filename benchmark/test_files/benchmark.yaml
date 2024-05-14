@@ -1,0 +1,106 @@
+label: Dog red eyes
+file: onlydog.tex
+model: gpt-3.5-turbo
+prompt: Changes eye color to red
+temperature: 1
+top_p: 0.8
+n: 30
+mask: masks/dog_mask7.png
+pattern: fill [Red] (56, 0)
+
+---
+
+label: Dog red ears
+file: onlydog.tex
+model: gpt-3.5-turbo
+prompt: Changes ear color to red
+temperature: 1
+top_p: 0.8
+n: 30
+mask: masks/dog_mask3.png
+pattern: fill [Red] (32,96)
+
+---
+
+label: Dog red cheeks
+file: onlydog.tex
+model: gpt-3.5-turbo
+prompt: Changes cheek color to red
+temperature: 1
+top_p: 0.8
+n: 30
+mask: masks/dog_mask1.png
+pattern: fill [Red] (0,-64)
+
+---
+
+label: Bee red winds
+file: bee.tex
+model: gpt-3.5-turbo
+prompt: Changes wing color to red
+temperature: 1
+top_p: 0.8
+n: 30
+mask: masks/bee_mask6.png
+pattern: fill [Red]
+
+---
+
+label: Bee red head
+file: bee.tex
+model: gpt-3.5-turbo
+prompt: Changes head color to red
+temperature: 1
+top_p: 0.8
+n: 30
+mask: masks/bee_mask2.png
+pattern: fill [Red] (0,128)
+
+---
+
+label: Bee red abdomen
+file: bee.tex
+model: gpt-3.5-turbo
+prompt: Changes abdomen color to red
+temperature: 1
+top_p: 0.8
+n: 30
+mask: masks/bee_mask5.png
+pattern: fill [Red] (-256, -160 + \i*80)
+
+---
+
+label: Squid red head
+file: squid.tex
+model: gpt-3.5-turbo
+prompt: Changes head color to red
+temperature: 1
+top_p: 0.8
+n: 30
+mask: masks/squid_mask1.png
+pattern: fill [Red] (0,96)
+
+---
+
+label: Squid red eye
+file: squid.tex
+model: gpt-3.5-turbo
+prompt: Changes eye color to red
+temperature: 1
+top_p: 0.8
+n: 30
+mask: masks/squid_mask4.png
+pattern: fill [Red]      (64, 16)
+
+---
+
+label: Squid red mouth
+file: squid.tex
+model: gpt-3.5-turbo
+prompt: Changes mouth color to red
+temperature: 1
+top_p: 0.8
+n: 30
+mask: masks/squid_mask7.png
+pattern: fill [Red]
+

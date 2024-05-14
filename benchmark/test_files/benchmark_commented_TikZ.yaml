@@ -1,0 +1,33 @@
+label: Dog red eyes
+file: commented.tex
+model: gpt-3.5-turbo
+prompt: Changes eye color to red
+temperature: 1
+top_p: 0.8
+n: 30
+mask: masks/dog_mask7.png
+pattern: fill [Red] (56, 0)
+
+---
+
+label: Dog red ears
+file: commented.tex
+model: gpt-3.5-turbo
+prompt: Changes ear color to red
+temperature: 1
+top_p: 0.8
+n: 30
+mask: masks/dog_mask3.png
+pattern: fill [Red] (32,96)
+
+---
+
+label: Dog red cheeks
+file: commented.tex
+model: gpt-3.5-turbo
+prompt: Changes cheek color to red
+temperature: 1
+top_p: 0.8
+n: 30
+mask: masks/dog_mask1.png
+pattern: fill [Red] (0,-64)

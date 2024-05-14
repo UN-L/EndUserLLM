@@ -1,0 +1,135 @@
+
+===PARAMETERS===
+Prompt: Changes eye color to red
+Input file: onlydog.tex
+Model: gpt-4-1106-preview
+Temperature: 1.0
+Top_P: 0.8
+
+===PROCESSING===
+
+Successes: 18/30
+No matches: 12/30
+Code matches: 29/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes ear color to red
+Input file: onlydog.tex
+Model: gpt-4-1106-preview
+Temperature: 1.0
+Top_P: 0.8
+
+===PROCESSING===
+
+Successes: 7/30
+No matches: 23/30
+Code matches: 7/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes cheek color to red
+Input file: onlydog.tex
+Model: gpt-4-1106-preview
+Temperature: 1.0
+Top_P: 0.8
+
+===PROCESSING===
+
+Successes: 0/30
+No matches: 30/30
+Code matches: 0/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes wing color to red
+Input file: bee.tex
+Model: gpt-4-1106-preview
+Temperature: 1.0
+Top_P: 0.8
+
+===PROCESSING===
+
+Successes: 30/30
+No matches: 0/30
+Code matches: 0/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes head color to red
+Input file: bee.tex
+Model: gpt-4-1106-preview
+Temperature: 1.0
+Top_P: 0.8
+
+===PROCESSING===
+
+Successes: 24/30
+No matches: 5/30
+Code matches: 16/30
+Compilation failures: 1/30
+
+
+===PARAMETERS===
+Prompt: Changes abdomen color to red
+Input file: bee.tex
+Model: gpt-4-1106-preview
+Temperature: 1.0
+Top_P: 0.8
+
+===PROCESSING===
+
+Successes: 0/30
+No matches: 30/30
+Code matches: 0/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes head color to red
+Input file: squid.tex
+Model: gpt-4-1106-preview
+Temperature: 1.0
+Top_P: 0.8
+
+===PROCESSING===
+
+Successes: 0/30
+No matches: 30/30
+Code matches: 0/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes eye color to red
+Input file: squid.tex
+Model: gpt-4-1106-preview
+Temperature: 1.0
+Top_P: 0.8
+
+===PROCESSING===
+
+Successes: 20/30
+No matches: 10/30
+Code matches: 4/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes mouth color to red
+Input file: squid.tex
+Model: gpt-4-1106-preview
+Temperature: 1.0
+Top_P: 0.8
+
+===PROCESSING===
+
+Successes: 6/30
+No matches: 24/30
+Code matches: 30/30
+Compilation failures: 0/30
+

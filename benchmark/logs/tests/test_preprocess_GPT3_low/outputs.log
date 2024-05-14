@@ -1,0 +1,50 @@
+
+===PARAMETERS===
+Prompt: Changes eye color to red
+Input file: onlydog.tex
+Model: gpt-4-1106-preview
+Temperature: 0.2
+Top_P: 0.1
+
+
+Successes: 30/30
+No matches: 0/30
+Code matches: 30/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes ear color to red
+Input file: onlydog.tex
+Model: gpt-4-1106-preview
+Temperature: 0.2
+Top_P: 0.1
+
+
+Successes: 14/30
+No matches: 16/30
+Code matches: 0/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes cheek color to red
+Input file: onlydog.tex
+Model: gpt-4-1106-preview
+Temperature: 0.2
+Top_P: 0.1
+
+
+Successes: 0/30
+No matches: 30/30
+Code matches: 0/30
+Compilation failures: 0/30
+
+
+===PARAMETERS===
+Prompt: Changes wing color to red
+Input file: bee.tex
+Model: gpt-4-1106-preview
+Temperature: 0.2
+Top_P: 0.1
+

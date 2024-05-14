@@ -1,0 +1,126 @@
+
+===PARAMETERS===
+Prompt: Changes eye color to red
+Input file: onlydog.tex
+Model: gpt-3.5-turbo
+Temperature: 1.0
+Top_P: 0.8
+
+
+Successes: 30/30.0
+No matches: 0.0/30.0
+Code matches: 30/30.0
+Compilation failures: 0/30.0
+
+
+===PARAMETERS===
+Prompt: Changes ear color to red
+Input file: onlydog.tex
+Model: gpt-3.5-turbo
+Temperature: 1.0
+Top_P: 0.8
+
+
+Successes: 24/30.0
+No matches: 6.0/30.0
+Code matches: 12/30.0
+Compilation failures: 0/30.0
+
+
+===PARAMETERS===
+Prompt: Changes cheek color to red
+Input file: onlydog.tex
+Model: gpt-3.5-turbo
+Temperature: 1.0
+Top_P: 0.8
+
+
+Successes: 20/30.0
+No matches: 10.0/30.0
+Code matches: 0/30.0
+Compilation failures: 0/30.0
+
+
+===PARAMETERS===
+Prompt: Changes wing color to red
+Input file: bee.tex
+Model: gpt-3.5-turbo
+Temperature: 1.0
+Top_P: 0.8
+
+
+Successes: 13/30.0
+No matches: 17.0/30.0
+Code matches: 0/30.0
+Compilation failures: 0/30.0
+
+
+===PARAMETERS===
+Prompt: Changes head color to red
+Input file: bee.tex
+Model: gpt-3.5-turbo
+Temperature: 1.0
+Top_P: 0.8
+
+
+Successes: 30/30.0
+No matches: 0.0/30.0
+Code matches: 4/30.0
+Compilation failures: 0/30.0
+
+
+===PARAMETERS===
+Prompt: Changes abdomen color to red
+Input file: bee.tex
+Model: gpt-3.5-turbo
+Temperature: 1.0
+Top_P: 0.8
+
+
+Successes: 0/30.0
+No matches: 30.0/30.0
+Code matches: 0/30.0
+Compilation failures: 0/30.0
+
+
+===PARAMETERS===
+Prompt: Changes head color to red
+Input file: squid.tex
+Model: gpt-3.5-turbo
+Temperature: 1.0
+Top_P: 0.8
+
+
+Successes: 0/30.0
+No matches: 30.0/30.0
+Code matches: 0/30.0
+Compilation failures: 0/30.0
+
+
+===PARAMETERS===
+Prompt: Changes eye color to red
+Input file: squid.tex
+Model: gpt-3.5-turbo
+Temperature: 1.0
+Top_P: 0.8
+
+
+Successes: 18/30.0
+No matches: 12.0/30.0
+Code matches: 30/30.0
+Compilation failures: 0/30.0
+
+
+===PARAMETERS===
+Prompt: Changes mouth color to red
+Input file: squid.tex
+Model: gpt-3.5-turbo
+Temperature: 1.0
+Top_P: 0.8
+
+
+Successes: 30/30.0
+No matches: 0.0/30.0
+Code matches: 30/30.0
+Compilation failures: 0/30.0
+

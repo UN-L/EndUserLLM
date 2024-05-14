@@ -1,0 +1,45 @@
+mask1
+  \fill [fill color] (0,96) ellipse [x radius=96, y radius=128];
+
+  \fill [Red] (0,96) ellipse [x radius=96, y radius=128];
+
+mask2
+  \fill [fill color]
+
+  \fill [Red]
+
+mask3
+  \fill [fill color]  (64, 16) circle [radius=48];
+
+  \fill [Red]  (64, 16) circle [radius=48];
+
+mask4
+  \fill [Grey50]      (64, 16) circle [radius=32];
+
+  \fill [Red]      (64, 16) circle [radius=32];
+
+mask5
+  \fill [BlueGrey900] (64, 16) circle [radius=12];
+
+  \fill [Red] (64, 16) circle [radius=12];
+
+mask6
+  \fill [fill color]  (-4, -20)
+
+  \fill [Red]  (-4, -20)
+
+mask7
+\fill [DeepOrange900]
+
+\fill [Red]
+
+mask8
+\fill [DeepOrange300]
+
+\fill [Red]
+
+mask9
+\fill [fill=\materialColor50] circle [radius=2];
+
+\fill [Red] circle [radius=2];
+

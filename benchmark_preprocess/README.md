@@ -1,3 +1,5 @@
+This is the first benchmarking test for the first preprocess.
+
 This script performs a benchmark of the entire "pre-preprocessing" process, involving three distinct steps:
 
 - Description generation with a VLM (GPT-Vision).
